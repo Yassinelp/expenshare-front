@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom';
 import Dashboard from './Dashboard/Dashboard';
 import Expenses from './Expenses/Expenses';
 import Persons from './Persons/Persons';
+import {Container} from 'reactstrap';
 
 class Group extends Component {
 
@@ -32,6 +33,7 @@ class Group extends Component {
         }
 
         return (
+            <Container>
             <div>
                 <h1>{this.state.sharegroup.slug}</h1>
                 <Menu url={this.props.match.url}/>
@@ -39,6 +41,7 @@ class Group extends Component {
                 <Route path={this.props.match.url + '/expenses'} render={props => <Expenses {...props} slug={this.props.match.params.slug} />}/>
                 <Route path={this.props.match.url + '/persons'} render={props => <Persons {...props} slug={this.props.match.params.slug} />}/>
             </div>
+            </Container>
         );
     }
 }

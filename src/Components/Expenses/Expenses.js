@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {NavLink, Route} from 'react-router-dom';
-import {Table} from 'reactstrap';
+import {Container, Table} from 'reactstrap';
 import Form from './Form';
+import Moment from 'react-moment';
 
 class Expenses extends Component {
 
@@ -25,17 +26,18 @@ class Expenses extends Component {
             expense = this.state.expenses.map(expense =>
             <tbody key={expense.id}>
                 <tr>
-                    <th scope="row">{expense.id}</th>
                     <td>{expense.person.firstname + ' ' + expense.person.lastname}</td>
                     <td>{parseFloat(expense.amount) + ' €'}</td>
                     <td>{expense.title}</td>
                     <td>{expense.category.label}</td>
+                    <td><Moment format="DD/MM/YYYY">{expense.createdAt}</Moment></td>
                 </tr>
             </tbody>
             );
         }
 
         return (
+            <Container>
             <div>
                 <h2>Dépenses</h2>
                 <NavLink to={this.props.match.url + '/add'}>Ajouter une dépense</NavLink>
@@ -43,16 +45,17 @@ class Expenses extends Component {
                 <Table hover>
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Nom</th>
                         <th>Montant</th>
                         <th>Libelle</th>
-                        <th>Catéorie</th>
+                        <th>Catégorie</th>
+                        <th>Dépense faite le :</th>
                     </tr>
                     </thead>
                     {expense}
                 </Table>
             </div>
+            </Container>
         );
     }
 }
