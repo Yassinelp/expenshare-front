@@ -34,6 +34,8 @@ class Persons extends Component {
         return (
             <React.Fragment>
                 <Container>
+                <NavLink to={this.props.match.url + '/add'}>Ajouter une personne</NavLink>
+                <Route path={this.props.match.url + '/add'} render={props => <FormPerson {...props} slug={this.props.slug}/>}/>
                 <h1>Personnes</h1>
                 
                 <Table hover>
@@ -50,8 +52,6 @@ class Persons extends Component {
                     
                 </Table>
 
-                <NavLink to={this.props.match.url + '/add'}>Ajouter une personne</NavLink>
-                <Route path={this.props.match.url + '/add'} render={props => <FormPerson {...props} slug={this.props.slug}/>}/>
                 </Container>
             </React.Fragment>
 

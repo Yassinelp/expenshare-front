@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {NavLink, Route} from 'react-router-dom';
 import {Container, Table} from 'reactstrap';
-import Form from './Form';
+import FormExpense from './FormExpense';
 import Moment from 'react-moment';
+
 
 class Expenses extends Component {
 
@@ -41,7 +42,7 @@ class Expenses extends Component {
             <div>
                 <h2>Dépenses</h2>
                 <NavLink to={this.props.match.url + '/add'}>Ajouter une dépense</NavLink>
-                <Route path={this.props.match.url + '/add'} component={Form}/>
+                <Route path={this.props.match.url + '/add'} component={FormExpense}/>
                 <Table hover>
                     <thead>
                     <tr>

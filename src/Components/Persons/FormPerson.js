@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {Form, FormGroup, Input, InputGroup, Button} from 'reactstrap';
 
 class FormPerson extends Component {
-
-
-
+    
     constructor(props) {
         super(props);
         this.state = { firstname: "", lastname: "", person: null};
@@ -38,7 +36,7 @@ class FormPerson extends Component {
         return (
             <div>
                     <h3 >Ajouter une personne au groupe {this.state.slug}</h3>
-                    <Form >
+                    <Form>
                         <FormGroup>
                             <InputGroup>
                                 <Input type="text" value={this.state.firstname} onChange={e => this.handleChangeF(e)} placeholder="Prénom" />
