@@ -28,6 +28,7 @@ class FormPerson extends Component {
             .then(data => {
                 console.log(data);
                 alert('Nouvelle personne crée avec succès !');
+                this.setState({ firstname : '', lastname : ''});
             })
             .catch(err => alert('Erreur lors de la création de la personne'))
         ;

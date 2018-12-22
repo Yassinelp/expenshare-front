@@ -6,7 +6,7 @@ class FormExpense extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { firstname: '', lastname:'',  category : [], person : [], cat : '', pers: '' };
+        this.state = { firstname: '', lastname:'',  category : [], person : [], cat : "", pers: "" };
     }
 
     handleChangeT(event) {
@@ -38,11 +38,10 @@ class FormExpense extends Component {
         event.preventDefault();
         fetch('http://localhost:8888/php/expenshare/public/expense/', {
             method: 'POST',
-            body: JSON.stringify({ title: this.state.title, amount: this.state.amount, createAt: this.state.createdAt, category: this.props.cat , person : this.props.pers })
+            body: JSON.stringify({ title: this.state.title, amount: this.state.amount, createAt: this.state.createdAt, category: this.state.cat , person : this.state.pers, slug : this.props.slug })
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 alert('Nouvelle dépense crée avec succès !');
             })
             .catch(err => alert('Erreur lors de la création de la dépense'))
@@ -50,7 +49,9 @@ class FormExpense extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8888/php/expenshare/public/person/group/' + this.props.slug)
+        fetch('http://localhost:8888/php/expenshare/public/person/group/' + this.props.slug, {
+            method: 'GET',
+        })
             .then(response => response.json())
             .then(data => this.setState({ person: data }));
 
@@ -71,7 +72,7 @@ class FormExpense extends Component {
             
             <Form className="m-0 m-auto"> 
                 <FormGroup>
-                <h3 className="text-center">Ajouter une Dépense au groupe : {this.state.slug}</h3>
+                <h3 className="text-center">Ajouter une Dépense au groupe : {this.props .slug}</h3>
                     <InputGroup>
                         <Input className="form-control form-control-lg col-md-6 m-0 m-auto" type="text" value={this.state.title} onChange={e => this.handleChangeT(e)} placeholder="Libelle" />
                     </InputGroup>

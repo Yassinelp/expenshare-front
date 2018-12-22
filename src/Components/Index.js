@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
-import { Container, Button, Input} from 'reactstrap';
+import { Container, Button, Input, Card, CardTitle, CardText, Row, Col} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Index extends Component {
@@ -55,9 +55,19 @@ class Index extends Component {
 
     return (
       <Container className="App">
+              <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>.
+            <Card body inverse color="info">
+        <CardTitle>Saisissez l'identifiant du groupe :</CardTitle>
+        <CardText></CardText>
         <Input type="text" onChange={e => this.handleChange(e)} placeholder="Groupe ID"/>
+        <br/>
         <Button color="primary" onClick={e => this.handleCreate(e)}>Creér</Button>
-        <Button color="info" onClick={e => this.handleOpen(e)}>Ouvrir</Button>
+        <br/>
+        <Button color="primary" onClick={e => this.handleOpen(e)}>Ouvrir</Button>
+          </Card>
+          </Col>
+          </Row>
       </Container>
     );
   }
